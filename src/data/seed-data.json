@@ -1,0 +1,1205 @@
+{
+  "meta": {
+    "generated_at": "2026-06-08",
+    "source": "v14 pipeline export",
+    "total_transcripts": 912,
+    "total_with_agent": 251
+  },
+  "team": {
+    "nCallsTotal": 246,
+    "nCallsNieuw": 107,
+    "nCallsHerhaal": 130,
+    "durationMinTotal": 1028.7,
+    "driversTotal": {
+      "welkom": 196,
+      "vraag_capteren": 45,
+      "identificatie": 40,
+      "oplossing": 80,
+      "toon": null,
+      "empathie": 52,
+      "afsluiting": 159,
+      "enquete": 11,
+      "inhoud": null
+    },
+    "driversNieuw": {
+      "welkom": 95,
+      "vraag_capteren": 26,
+      "identificatie": 28,
+      "oplossing": 37,
+      "toon": null,
+      "empathie": 24,
+      "afsluiting": 73,
+      "enquete": 4,
+      "inhoud": null
+    },
+    "driversHerhaal": {
+      "welkom": 96,
+      "vraag_capteren": 19,
+      "identificatie": 12,
+      "oplossing": 43,
+      "toon": null,
+      "empathie": 28,
+      "afsluiting": 86,
+      "enquete": 7,
+      "inhoud": null
+    },
+    "aiTotal": 0.339,
+    "aiNieuw": 0.383,
+    "aiHerhaal": 0.32,
+    "gesprekstype": {
+      "inbound_klant": 167,
+      "outbound_terugbel": 62,
+      "intercollegiaal": 6,
+      "uitgaand_dealer": 4,
+      "overig": 6,
+      "voicemail": 1
+    },
+    "hoofdcategorie": {
+      "MyRenault_app_connected": 66,
+      "Algemene_info_overig": 37,
+      "Laadpaal_Mobilize_opladen": 26,
+      "Klacht_dealer_service": 17,
+      "Garantie_claim": 15,
+      "Technisch_storing_voertuig": 38,
+      "Onderhoud_APK_afspraak": 4,
+      "Pechhulp_repatriering": 14,
+      "Factuur_financieel_contract": 12,
+      "Onderdelen_levering": 11,
+      "Doorverbinden_verkeerde_afdeling": 6
+    },
+    "klantEmotie": {
+      "neutraal": 137,
+      "onbekend": 15,
+      "tevreden": 35,
+      "gefrustreerd_boos": 19,
+      "licht_geirriteerd": 40
+    },
+    "opgelost": {
+      "deels": 123,
+      "nee": 58,
+      "ja": 41,
+      "nvt": 24
+    },
+    "terugbelBelofte": {
+      "ja": 71,
+      "nee": 175
+    }
+  },
+  "agents": [
+    {
+      "naam": "Sarah Albuquerque",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "multimedia"
+      ],
+      "teams": false,
+      "nCallsTotal": 102,
+      "nCallsNieuw": 47,
+      "nCallsHerhaal": 53,
+      "durationMinTotal": 360.4,
+      "driversTotal": {
+        "welkom": 76,
+        "vraag_capteren": 20,
+        "identificatie": 9,
+        "oplossing": 37,
+        "toon": null,
+        "empathie": 20,
+        "afsluiting": 70,
+        "enquete": 2,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 41,
+        "vraag_capteren": 12,
+        "identificatie": 7,
+        "oplossing": 18,
+        "toon": null,
+        "empathie": 9,
+        "afsluiting": 31,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 33,
+        "vraag_capteren": 8,
+        "identificatie": 2,
+        "oplossing": 19,
+        "toon": null,
+        "empathie": 11,
+        "afsluiting": 39,
+        "enquete": 2,
+        "inhoud": null
+      },
+      "aiTotal": 0.328,
+      "aiNieuw": 0.359,
+      "aiHerhaal": 0.307,
+      "gesprekstype": {
+        "inbound_klant": 69,
+        "outbound_terugbel": 28,
+        "intercollegiaal": 2,
+        "overig": 1,
+        "uitgaand_dealer": 1,
+        "voicemail": 1
+      },
+      "hoofdcategorie": {
+        "MyRenault_app_connected": 27,
+        "Algemene_info_overig": 13,
+        "Garantie_claim": 8,
+        "Technisch_storing_voertuig": 13,
+        "Onderhoud_APK_afspraak": 4,
+        "Pechhulp_repatriering": 8,
+        "Factuur_financieel_contract": 3,
+        "Laadpaal_Mobilize_opladen": 14,
+        "Doorverbinden_verkeerde_afdeling": 3,
+        "Onderdelen_levering": 7,
+        "Klacht_dealer_service": 2
+      },
+      "klantEmotie": {
+        "neutraal": 62,
+        "onbekend": 3,
+        "tevreden": 14,
+        "gefrustreerd_boos": 8,
+        "licht_geirriteerd": 15
+      },
+      "opgelost": {
+        "deels": 57,
+        "nee": 25,
+        "ja": 14,
+        "nvt": 6
+      },
+      "terugbelBelofte": {
+        "ja": 41,
+        "nee": 61
+      },
+      "nps": {
+        "verzoeken": 51.3,
+        "klachten": 50,
+        "support": 90,
+        "n_v": 16,
+        "n_k": 2,
+        "n_s": 4
+      },
+      "npsAvg": 58.2,
+      "marten": 1.0,
+      "profile": {
+        "sterk": "Klantbeleving topniveau door warmte en empathie in toon. Alle beluisterde calls: warm, empathisch, coachend, geduldig.",
+        "zwak": "Mist soms inhoudelijke alternatieven wanneer eerste antwoord \"we weten het niet\" is. Bv. Mobilize-storing — warm maar zonder workaround.",
+        "training": "Niet op toon (al goud). Wel: drie-vragen-reflex bij \"geen oplossing\" — workaround / datum-prognose / waar wel terecht?",
+        "tip": "Wanneer je geen directe oplossing hebt: vraag jezelf \"is er een workaround? datum-prognose? wie kan wél helpen?\" Klanten waarderen het wanneer je ze met perspectief laat gaan."
+      },
+      "lastCall": {
+        "case": "22825",
+        "duur": "3:42",
+        "goed": "je corrigeerde dealer-misinfo over het contract zonder de dealer af te vallen — klant bleef tevreden.",
+        "klant_zei": "\"Bedankt voor het uitzoeken, dat scheelt mij weer een belletje.\"",
+        "ai_zag": "rond 2:10 had je een moment van \"we weten het niet\" — vergat je workaround te benoemen. Volgende keer: drie-vragen-reflex."
+      },
+      "nameKey": "Sarah",
+      "npsNaam": "Sarah Albuquerque",
+      "focusDrivers": [
+        "enquete",
+        "identificatie",
+        "vraag_capteren"
+      ]
+    },
+    {
+      "naam": "Arshad Akalie",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "multimedia"
+      ],
+      "teams": false,
+      "nCallsTotal": 57,
+      "nCallsNieuw": 25,
+      "nCallsHerhaal": 31,
+      "durationMinTotal": 317.1,
+      "driversTotal": {
+        "welkom": 51,
+        "vraag_capteren": 11,
+        "identificatie": 22,
+        "oplossing": 26,
+        "toon": null,
+        "empathie": 19,
+        "afsluiting": 38,
+        "enquete": 2,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 25,
+        "vraag_capteren": 6,
+        "identificatie": 16,
+        "oplossing": 14,
+        "toon": null,
+        "empathie": 10,
+        "afsluiting": 16,
+        "enquete": 1,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 26,
+        "vraag_capteren": 5,
+        "identificatie": 6,
+        "oplossing": 12,
+        "toon": null,
+        "empathie": 9,
+        "afsluiting": 22,
+        "enquete": 1,
+        "inhoud": null
+      },
+      "aiTotal": 0.424,
+      "aiNieuw": 0.503,
+      "aiHerhaal": 0.373,
+      "gesprekstype": {
+        "inbound_klant": 35,
+        "uitgaand_dealer": 2,
+        "outbound_terugbel": 18,
+        "intercollegiaal": 1,
+        "overig": 1
+      },
+      "hoofdcategorie": {
+        "MyRenault_app_connected": 22,
+        "Technisch_storing_voertuig": 7,
+        "Klacht_dealer_service": 6,
+        "Pechhulp_repatriering": 3,
+        "Garantie_claim": 1,
+        "Laadpaal_Mobilize_opladen": 6,
+        "Algemene_info_overig": 7,
+        "Onderdelen_levering": 2,
+        "Doorverbinden_verkeerde_afdeling": 2,
+        "Factuur_financieel_contract": 1
+      },
+      "klantEmotie": {
+        "neutraal": 29,
+        "licht_geirriteerd": 9,
+        "onbekend": 4,
+        "tevreden": 13,
+        "gefrustreerd_boos": 2
+      },
+      "opgelost": {
+        "ja": 13,
+        "nee": 10,
+        "deels": 28,
+        "nvt": 6
+      },
+      "terugbelBelofte": {
+        "nee": 44,
+        "ja": 13
+      },
+      "nps": {
+        "support": 86.7,
+        "n_s": 9
+      },
+      "npsAvg": 86.7,
+      "marten": null,
+      "profile": {
+        "sterk": "Warm-coachend, professioneel. Beluisterde calls: Warm – Coachend – Zakelijk.",
+        "zwak": "Afsluiting kort afgekapt — patroon dat we ook bij Daniel zien.",
+        "training": "Te weinig data voor profiel. Vermoeden: deelt afsluit-zwakte met Daniel.",
+        "tip": "Sluit af met de vaste vraag: \"Is er nog iets waar ik u verder mee kan helpen?\" Geef de klant ruimte om te bedanken."
+      },
+      "lastCall": {
+        "case": "22760",
+        "duur": "5:18",
+        "goed": "je legde de FIN-nummer / garantie-flow voor zakelijke klant glashelder uit — coachend zonder neerbuigend.",
+        "klant_zei": "\"Dat had ik niet zelf bedacht, dankjewel.\"",
+        "ai_zag": "afsluiting was kort: je zei alleen \"fijne dag\" zonder \"is er nog iets?\". Klant gaf bedank-opening die je niet ophaalde."
+      },
+      "nameKey": "Arshad",
+      "npsNaam": "Arshad Akalie",
+      "focusDrivers": [
+        "enquete",
+        "vraag_capteren",
+        "empathie"
+      ]
+    },
+    {
+      "naam": "Reno Els",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "multimedia"
+      ],
+      "teams": false,
+      "nCallsTotal": 54,
+      "nCallsNieuw": 28,
+      "nCallsHerhaal": 23,
+      "durationMinTotal": 241.0,
+      "driversTotal": {
+        "welkom": 39,
+        "vraag_capteren": 12,
+        "identificatie": 6,
+        "oplossing": 11,
+        "toon": null,
+        "empathie": 9,
+        "afsluiting": 34,
+        "enquete": 4,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 23,
+        "vraag_capteren": 7,
+        "identificatie": 4,
+        "oplossing": 4,
+        "toon": null,
+        "empathie": 5,
+        "afsluiting": 24,
+        "enquete": 3,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 15,
+        "vraag_capteren": 5,
+        "identificatie": 2,
+        "oplossing": 7,
+        "toon": null,
+        "empathie": 4,
+        "afsluiting": 10,
+        "enquete": 1,
+        "inhoud": null
+      },
+      "aiTotal": 0.304,
+      "aiNieuw": 0.357,
+      "aiHerhaal": 0.273,
+      "gesprekstype": {
+        "inbound_klant": 46,
+        "overig": 2,
+        "intercollegiaal": 2,
+        "outbound_terugbel": 4
+      },
+      "hoofdcategorie": {
+        "MyRenault_app_connected": 15,
+        "Garantie_claim": 2,
+        "Algemene_info_overig": 10,
+        "Technisch_storing_voertuig": 12,
+        "Klacht_dealer_service": 4,
+        "Pechhulp_repatriering": 1,
+        "Factuur_financieel_contract": 5,
+        "Laadpaal_Mobilize_opladen": 3,
+        "Doorverbinden_verkeerde_afdeling": 1,
+        "Onderdelen_levering": 1
+      },
+      "klantEmotie": {
+        "tevreden": 5,
+        "licht_geirriteerd": 10,
+        "neutraal": 29,
+        "gefrustreerd_boos": 6,
+        "onbekend": 4
+      },
+      "opgelost": {
+        "ja": 11,
+        "nee": 12,
+        "nvt": 7,
+        "deels": 24
+      },
+      "terugbelBelofte": {
+        "nee": 47,
+        "ja": 7
+      },
+      "nps": {
+        "verzoeken": 20,
+        "support": 62.5,
+        "n_v": 5,
+        "n_s": 8
+      },
+      "npsAvg": 46.2,
+      "marten": null,
+      "profile": {
+        "sterk": "Pre-call-voorbereiding, kruiscontroleren, scope-uitleg. Inhoudelijk sterk over lange calls. Franse-postcode-truc bij Mobilize.",
+        "zwak": "Pedant-valkuil bij lange uitleg-momenten wanneer klant niet meteen meegaat (\"Reno wordt erg pedant\").",
+        "training": "Korter per uitleg-zin; geen \"nogmaals\" / \"zoals aan het begin\"; erkennen voor doorgaan met uitleggen.",
+        "tip": "Bij multimedia-uitleg: kort per zin, geen \"nogmaals\" of \"zoals aan het begin\". Daar kantelt de klant-toon van rustig naar ongeduldig."
+      },
+      "lastCall": {
+        "case": "22833",
+        "duur": "4:12",
+        "goed": "je legde de Franse-postcode-truc bij Mobilize duidelijk uit, klant ging tevreden weg.",
+        "klant_zei": "\"Bedankt, dat is mij niet eerder verteld.\"",
+        "ai_zag": "rond 2:15 zei je \"dat is ook de reden waarom ik aan het begin van het gesprek zei…\" — let op die terugverwijzing, blijf in het moment."
+      },
+      "nameKey": "Reno",
+      "npsNaam": "Reno Els",
+      "focusDrivers": [
+        "enquete",
+        "identificatie",
+        "empathie"
+      ]
+    },
+    {
+      "naam": "Daniel Buabeng",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "multimedia"
+      ],
+      "teams": false,
+      "nCallsTotal": 21,
+      "nCallsNieuw": 7,
+      "nCallsHerhaal": 11,
+      "durationMinTotal": 47.1,
+      "driversTotal": {
+        "welkom": 19,
+        "vraag_capteren": 1,
+        "identificatie": 1,
+        "oplossing": 2,
+        "toon": null,
+        "empathie": 1,
+        "afsluiting": 9,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 6,
+        "vraag_capteren": 1,
+        "identificatie": 1,
+        "oplossing": 1,
+        "toon": null,
+        "empathie": 0,
+        "afsluiting": 2,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 11,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 1,
+        "toon": null,
+        "empathie": 1,
+        "afsluiting": 7,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "aiTotal": 0.224,
+      "aiNieuw": 0.224,
+      "aiHerhaal": 0.26,
+      "gesprekstype": {
+        "outbound_terugbel": 4,
+        "inbound_klant": 14,
+        "intercollegiaal": 1,
+        "overig": 2
+      },
+      "hoofdcategorie": {
+        "Laadpaal_Mobilize_opladen": 3,
+        "Klacht_dealer_service": 2,
+        "Garantie_claim": 2,
+        "Onderdelen_levering": 1,
+        "Factuur_financieel_contract": 3,
+        "Algemene_info_overig": 7,
+        "MyRenault_app_connected": 2,
+        "Technisch_storing_voertuig": 1
+      },
+      "klantEmotie": {
+        "neutraal": 13,
+        "gefrustreerd_boos": 1,
+        "licht_geirriteerd": 3,
+        "onbekend": 3,
+        "tevreden": 1
+      },
+      "opgelost": {
+        "nee": 8,
+        "deels": 7,
+        "nvt": 5,
+        "ja": 1
+      },
+      "terugbelBelofte": {
+        "nee": 14,
+        "ja": 7
+      },
+      "nps": {
+        "verzoeken": 50,
+        "support": -37.3,
+        "n_v": 2,
+        "n_s": 22
+      },
+      "npsAvg": -30.0,
+      "marten": 0.87,
+      "profile": {
+        "sterk": "Coachend en geduldig wanneer hij ruimte geeft — geduldige technische uitleg ook over 23-min marathon.",
+        "zwak": "Bipolair: vervalt in pedante uitleg bij vasthouden aan eigen ritme. Afsluiting consistent niet expliciet. NPS Support −37 op 22 enquêtes bevestigt: klant ervaart pedant-patroon.",
+        "training": "Klant écht horen voor reageren; pauze tussen klantvraag en agent-antwoord. Afsluit-checklist structureel (\"Is er nog iets...?\").",
+        "tip": "Pauzeer 1 seconde na elke klantvraag voor je antwoordt. Zorgt dat je écht hoort wat de klant zegt voor je in oplossings-modus schiet."
+      },
+      "lastCall": {
+        "case": "22737",
+        "duur": "6:45",
+        "goed": "je nam klant geduldig mee door laadpaal-timer instellingen — over 6 minuten consistent rustig.",
+        "klant_zei": "\"Oké, ik snap het nu, dankjewel.\"",
+        "ai_zag": "in scène 3 herhaal je dezelfde uitleg 2x — klant gaf al begripssignaal. Sneller doorpakken volgende keer."
+      },
+      "nameKey": "Daniel",
+      "npsNaam": "Daniel Buabeng",
+      "focusDrivers": [
+        "enquete",
+        "vraag_capteren",
+        "identificatie"
+      ]
+    },
+    {
+      "naam": "Sayrah Badloe",
+      "rol": "Back Office",
+      "specs": [
+        "algemeen",
+        "af en toe FO"
+      ],
+      "teams": false,
+      "nCallsTotal": 12,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 12,
+      "durationMinTotal": 63.1,
+      "driversTotal": {
+        "welkom": 11,
+        "vraag_capteren": 1,
+        "identificatie": 2,
+        "oplossing": 4,
+        "toon": null,
+        "empathie": 3,
+        "afsluiting": 8,
+        "enquete": 3,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": null,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 11,
+        "vraag_capteren": 1,
+        "identificatie": 2,
+        "oplossing": 4,
+        "toon": null,
+        "empathie": 3,
+        "afsluiting": 8,
+        "enquete": 3,
+        "inhoud": null
+      },
+      "aiTotal": 0.381,
+      "aiNieuw": null,
+      "aiHerhaal": 0.381,
+      "gesprekstype": {
+        "uitgaand_dealer": 1,
+        "inbound_klant": 3,
+        "outbound_terugbel": 8
+      },
+      "hoofdcategorie": {
+        "Klacht_dealer_service": 3,
+        "Pechhulp_repatriering": 2,
+        "Technisch_storing_voertuig": 5,
+        "Garantie_claim": 2
+      },
+      "klantEmotie": {
+        "onbekend": 1,
+        "licht_geirriteerd": 3,
+        "tevreden": 2,
+        "gefrustreerd_boos": 2,
+        "neutraal": 4
+      },
+      "opgelost": {
+        "ja": 2,
+        "deels": 7,
+        "nee": 3
+      },
+      "terugbelBelofte": {
+        "ja": 3,
+        "nee": 9
+      },
+      "nps": {
+        "klachten": 69.2,
+        "support": 40,
+        "n_k": 13,
+        "n_s": 1
+      },
+      "npsAvg": 67.1,
+      "marten": 0.93,
+      "profile": {
+        "sterk": "Empathie-master in complexe situaties. Hand-off-specialist en klacht-bemiddelaar. Erkent eigen fouten ongedwongen en herstelt direct.",
+        "zwak": "Te weinig data voor harde uitspraken — 12 calls. Geen patroon van weakness zichtbaar.",
+        "training": "Profileren als hand-off-specialist en klacht-bemiddelaar — daar zit ze al sterk in.",
+        "tip": "Je hand-off-patroon (context overnemen, eigen positie innemen, herstellen) is textbook-niveau. Deel het in een team-moment."
+      },
+      "lastCall": {
+        "case": "22768",
+        "duur": "4:55",
+        "goed": "je nam klacht over dealer-bezoek volledig over en gaf coachend advies (\"bel Dennis bij Mossel met een leuk stemmetje\").",
+        "klant_zei": "\"Ja dat doe ik, fijne dag verder.\"",
+        "ai_zag": "sterke afsluit-formule, klant ging met perspectief weg. Geen verbeterpunt deze call."
+      },
+      "nameKey": "Sayrah",
+      "npsNaam": "Sayrah Badloe",
+      "focusDrivers": [
+        "vraag_capteren",
+        "identificatie",
+        "empathie"
+      ]
+    },
+    {
+      "naam": "Sara El-Berri",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "multimedia"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {
+        "verzoeken": 85.7,
+        "support": 65.5,
+        "n_v": 7,
+        "n_s": 18
+      },
+      "npsAvg": 71.2,
+      "marten": null,
+      "profile": {
+        "sterk": "Enquête-kanon. NPS Verzoeken +86 op 7 enquêtes; hoogste van team. Belt via Teams.",
+        "zwak": "Calls niet in Webex-opnames — driver-detectie via transcript niet mogelijk. Coaching via andere kanalen.",
+        "training": "Aparte Teams-pipeline of meeluister-route opzetten.",
+        "tip": "Vraag Kim of er een Teams-pipeline kan komen — je werk verdient zichtbaarheid in het dashboard."
+      },
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": "Sara El-Berri",
+      "focusDrivers": []
+    },
+    {
+      "naam": "Enno van Vaale",
+      "rol": "Back Office",
+      "specs": [
+        "algemeen",
+        "Alpine"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0.0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": null,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": null,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": null,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": null
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {
+        "klachten": 56,
+        "n_k": 10
+      },
+      "npsAvg": 56.0,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": "Enno",
+      "npsNaam": "Enno van Vaale",
+      "focusDrivers": []
+    },
+    {
+      "naam": "Rachid de Ling",
+      "rol": "Back Office",
+      "specs": [
+        "multimedia"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {
+        "klachten": -60,
+        "support": 0,
+        "n_k": 1,
+        "n_s": 1
+      },
+      "npsAvg": -30.0,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": "Rachid de Ling",
+      "focusDrivers": []
+    },
+    {
+      "naam": "Jeramie",
+      "rol": "Back Office",
+      "specs": [
+        "multimedia"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {},
+      "npsAvg": null,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": null,
+      "focusDrivers": []
+    },
+    {
+      "naam": "Matthijs Rands",
+      "rol": "Back Office",
+      "specs": [
+        "algemeen",
+        "Alpine"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {
+        "klachten": 100,
+        "n_k": 6
+      },
+      "npsAvg": 100.0,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": "Matthijs Rands",
+      "focusDrivers": []
+    },
+    {
+      "naam": "Jalda Azimi",
+      "rol": "Front Office",
+      "specs": [
+        "algemeen",
+        "parts"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {
+        "klachten": 100,
+        "support": 100,
+        "n_k": 2,
+        "n_s": 6
+      },
+      "npsAvg": 100.0,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": "Jalda Azimi",
+      "focusDrivers": []
+    },
+    {
+      "naam": "Trees",
+      "rol": "Front Office",
+      "specs": [
+        "parts"
+      ],
+      "teams": true,
+      "nCallsTotal": 0,
+      "nCallsNieuw": 0,
+      "nCallsHerhaal": 0,
+      "durationMinTotal": 0,
+      "driversTotal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversNieuw": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "driversHerhaal": {
+        "welkom": 0,
+        "vraag_capteren": 0,
+        "identificatie": 0,
+        "oplossing": 0,
+        "toon": 0,
+        "empathie": 0,
+        "afsluiting": 0,
+        "enquete": 0,
+        "inhoud": 0
+      },
+      "aiTotal": null,
+      "aiNieuw": null,
+      "aiHerhaal": null,
+      "gesprekstype": {},
+      "hoofdcategorie": {},
+      "klantEmotie": {},
+      "opgelost": {},
+      "terugbelBelofte": {},
+      "nps": {},
+      "npsAvg": null,
+      "marten": null,
+      "profile": {},
+      "lastCall": null,
+      "nameKey": null,
+      "npsNaam": null,
+      "focusDrivers": []
+    }
+  ],
+  "drivers": [
+    {
+      "key": "welkom",
+      "label": "Welkom",
+      "group": "welkom",
+      "detect": true,
+      "order": 1
+    },
+    {
+      "key": "vraag_capteren",
+      "label": "Vraag capteren",
+      "group": "vraag",
+      "detect": true,
+      "order": 2
+    },
+    {
+      "key": "identificatie",
+      "label": "Identificatie van klant",
+      "group": "vraag",
+      "detect": true,
+      "order": 3
+    },
+    {
+      "key": "oplossing",
+      "label": "Oplossing / hulp bieden",
+      "group": "oplossing",
+      "detect": true,
+      "order": 4
+    },
+    {
+      "key": "toon",
+      "label": "Toon (audio)",
+      "group": "oplossing",
+      "detect": false,
+      "order": 5
+    },
+    {
+      "key": "empathie",
+      "label": "Empathie",
+      "group": "empathie",
+      "detect": true,
+      "order": 6
+    },
+    {
+      "key": "afsluiting",
+      "label": "Afsluiting",
+      "group": "afsluiting",
+      "detect": true,
+      "order": 7
+    },
+    {
+      "key": "enquete",
+      "label": "Enquête",
+      "group": "afsluiting",
+      "detect": true,
+      "order": 8
+    },
+    {
+      "key": "inhoud",
+      "label": "Inhoud (KB)",
+      "group": "inhoud",
+      "detect": false,
+      "order": 9
+    }
+  ],
+  "driverDefs": {
+    "welkom": "Begroet klant met tijd-van-dag, naam en organisatie in eerste 30 seconden.",
+    "vraag_capteren": "Vat de klantvraag samen of herhaalt voor verificatie (\"als ik het goed begrijp...\").",
+    "identificatie": "Vraagt klantgegevens uit: kenteken, e-mail, achternaam, VIN, chassisnummer.",
+    "oplossing": "Benoemt concreet wat er gaat gebeuren (\"wat ik voor u ga doen is...\", \"ik ga regelen...\").",
+    "toon": "Warme, dynamische toon, geen stiltes. Vereist audio-analyse — fase 2.",
+    "empathie": "Erkent emotie (\"wat vervelend\") of geeft ruimte via vragende zinnen (\"waar kan ik u verder mee helpen?\").",
+    "afsluiting": "Sluit af met bedankje, beleefdheidsformule, vervolgvraag.",
+    "enquete": "Benoemt enquête-mogelijkheid actief, eventueel met \"9 of 10 helpt enorm\".",
+    "inhoud": "Inhoudelijk juiste antwoord. Vereist Renault-KB — fase 2."
+  },
+  "catLabels": {
+    "MyRenault_app_connected": "MyRenault / app",
+    "Technisch_storing_voertuig": "Technische storing",
+    "Onderdelen_levering": "Onderdelen / levering",
+    "Garantie_claim": "Garantie / claim",
+    "Laadpaal_Mobilize_opladen": "Laadpaal / Mobilize",
+    "Klacht_dealer_service": "Klacht dealer",
+    "Pechhulp_repatriering": "Pechhulp",
+    "Factuur_financieel_contract": "Factuur / contract",
+    "Doorverbinden_verkeerde_afdeling": "Doorverbinden",
+    "Onderhoud_APK_afspraak": "Onderhoud / APK",
+    "Algemene_info_overig": "Algemene info / overig"
+  },
+  "typeLabels": {
+    "inbound_klant": "Inkomend (klant)",
+    "outbound_terugbel": "Terugbel",
+    "uitgaand_dealer": "Naar dealer",
+    "intercollegiaal": "Intercollegiaal",
+    "overig": "Overig",
+    "voicemail": "Voicemail"
+  },
+  "emoLabels": {
+    "tevreden": "Tevreden",
+    "neutraal": "Neutraal",
+    "licht_geirriteerd": "Licht geïrriteerd",
+    "gefrustreerd_boos": "Gefrustreerd / boos",
+    "onbekend": "Onbekend"
+  }
+}

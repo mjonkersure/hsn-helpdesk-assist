@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
+/* ============================================================
+   & sure-it huisstijl
+   ============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* & sure-it primaire kleuren */
+  --sure-teal-900: #005A6C;   /* donker teal — hoofdkleur */
+  --sure-teal-700: #247A8A;   /* medium teal */
+  --sure-teal-400: #67B3BE;   /* lichter teal */
+  --sure-orange: #F8971D;     /* accent oranje */
+
+  /* Achtergrond + basis */
+  --background: #F4F6F9;
+  --foreground: #1A2030;
+  --surface: #FFFFFF;
+  --surface-muted: #FAFBFC;
+  --border: #E3E7EE;
+
+  /* Functioneel */
+  --green: #2c9e57;
+  --amber: #e8970e;
+  --red: #d24a3e;
+  --grey: #aab3c2;
+  --muted: #6b7588;
+
+  /* Driver-groep kleuren (uit Marten's template) */
+  --g-welkom: #bcd9ed;
+  --g-vraag: #b9d8c1;
+  --g-oplossing: #f0d49b;
+  --g-empathie: #f0d49b;
+  --g-afsluiting: #f5b7a5;
+  --g-inhoud: #d8b9d8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* & sure-it palette */
+  --color-sure-900: var(--sure-teal-900);
+  --color-sure-700: var(--sure-teal-700);
+  --color-sure-400: var(--sure-teal-400);
+  --color-sure-orange: var(--sure-orange);
+
+  --color-green: var(--green);
+  --color-amber: var(--amber);
+  --color-red: var(--red);
+  --color-grey: var(--grey);
+  --color-muted: var(--muted);
+
+  --color-g-welkom: var(--g-welkom);
+  --color-g-vraag: var(--g-vraag);
+  --color-g-oplossing: var(--g-oplossing);
+  --color-g-empathie: var(--g-empathie);
+  --color-g-afsluiting: var(--g-afsluiting);
+  --color-g-inhoud: var(--g-inhoud);
+
+  --font-sans: var(--font-dm-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Headings & sure-it style: bold DM Sans */
+h1, h2, h3, h4 {
+  font-weight: 600;
 }
