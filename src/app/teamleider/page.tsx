@@ -6,7 +6,7 @@ import { DriverOverviewTable } from '@/components/DriverOverviewTable';
 import { TeamRanking } from '@/components/TeamRanking';
 import { DriverLegenda } from '@/components/DriverLegenda';
 import { KlantscoreTabel } from '@/components/KlantscoreTabel';
-import { EnqueteCorrelationChart } from '@/components/EnqueteCorrelationChart';
+import { DriverComparisonChart } from '@/components/DriverComparisonChart';
 import { getDashboardData } from '@/lib/data';
 import { getKlantscores } from '@/lib/klantscores';
 
@@ -54,17 +54,18 @@ export default function TeamleiderPage() {
           </div>
         </Section>
 
-        {/* Correlatie-grafiek — vraag-naar-enquête vs ontvangen enquêtes */}
+        {/* Vergelijking: AI-detectie gesprek vs Klant-rating CSAT */}
         <Section
-          title="Vragen om enquête vs ontvangen enquêtes"
-          sub="correlatie tussen gesprek-output (driver Enquête) en feitelijke klantscore-binnenkomst"
+          title="AI ziet versus klant ervaart"
+          sub="5 gesprek-drivers (AI-detectie) naast 5 CSAT-sub-drivers (klant zelf)"
         >
           <div className="bg-white border border-[var(--border)] rounded-lg p-5">
             <p className="text-xs italic text-[var(--muted)] mb-3">
-              Helpt het om in de call expliciet naar de enquête te vragen? Plot per medewerker
-              hoe vaak ze het noemen tegen hoeveel enquêtes ze binnenkrijgen (met kleur = klant-VoC).
+              Per medewerker, voor elk gesprek-driver ↔ CSAT-sub-driver paar: hoe vaak we het
+              detecteren tegenover hoe de klant het in de enquête beoordeelt. Beide naar 0-100%
+              geschaald zodat ze vergelijkbaar zijn.
             </p>
-            <EnqueteCorrelationChart data={data} klantscores={klantscores} />
+            <DriverComparisonChart data={data} klantscores={klantscores} />
           </div>
         </Section>
 

@@ -2,21 +2,27 @@
 
 import { useState } from 'react';
 import type { SampleTranscript } from '@/types/data';
+import type { GenereerMailResponse, MailDriverKey, MailDrivers } from '@/types/mail';
+import { MAIL_DRIVER_LABELS, MAIL_DRIVER_TOELICHTING } from '@/types/mail';
 
 interface Props {
   transcripts: SampleTranscript[];
 }
 
-interface GenerateResponse {
-  mail?: string;
-  mock?: boolean;
-  error?: string;
-}
+const DRIVER_ORDER: MailDriverKey[] = [
+  'welkom',
+  'identificatie',
+  'vraag_capteren',
+  'oplossing',
+  'proactief_ondersteunend',
+  'empathie',
+  'afsluiting',
+  'enquete',
+];
 
 export function MailGenerator({ transcripts }: Props) {
   const [selectedId, setSelectedId] = useState<string>(transcripts[0]?.case_id ?? '');
-  const [mail, setMail] = useState<string>('');
-  const [isMock, setIsMock] = useState(false);
+  const [result, setResult] = useState<GenereerMailResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -27,21 +33,19 @@ export function MailGenerator({ transcripts }: Props) {
     if (!selected) return;
     setLoading(true);
     setError(null);
-    setMail('');
-    setIsMock(false);
+    setResult(null);
     try {
       const res = await fetch('/api/genereer-mail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ case_id: selected.case_id }),
       });
-      const data = (await res.json()) as GenerateResponse;
+      const data = (await res.json()) as GenereerMailResponse;
       if (!res.ok || data.error) {
         setError(data.error ?? `Fout: ${res.status}`);
         return;
       }
-      setMail(data.mail ?? '');
-      setIsMock(!!data.mock);
+      setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Onbekende fout');
     } finally {
@@ -50,8 +54,9 @@ export function MailGenerator({ transcripts }: Props) {
   }
 
   async function copyMail() {
-    if (!mail) return;
-    await navigator.clipboard.writeText(mail);
+    if (!result) return;
+    const text = `Onderwerp: ${result.onderwerp}\n\n${result.body}`;
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -85,7 +90,7 @@ export function MailGenerator({ transcripts }: Props) {
           value={selectedId}
           onChange={(e) => {
             setSelectedId(e.target.value);
-            setMail('');
+            setResult(null);
             setError(null);
           }}
           className="w-full bg-[var(--surface-muted)] border border-[var(--border)] rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--sure-teal-400)]"
@@ -132,6 +137,10 @@ export function MailGenerator({ transcripts }: Props) {
                     <span className="text-[var(--muted)]"> — {selected.subonderwerp}</span>
                   )}
                 </div>
+                <div>
+                  <span className="text-[var(--muted)]">Klant-emotie:</span>{' '}
+                  <span className="font-medium">{selected.klant_emotie}</span>
+                </div>
                 <div className="text-xs italic text-[var(--muted)] mt-2">
                   Samenvatting (pipeline): {selected.samenvatting}
                 </div>
@@ -162,7 +171,7 @@ export function MailGenerator({ transcripts }: Props) {
               Conceptmail
             </h2>
             <div className="flex gap-2">
-              {mail && (
+              {result && (
                 <button
                   onClick={copyMail}
                   className="text-xs px-3 py-1.5 rounded-md border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
@@ -175,12 +184,12 @@ export function MailGenerator({ transcripts }: Props) {
                 disabled={loading || !selected}
                 className="text-sm px-4 py-1.5 rounded-md bg-[var(--sure-teal-900)] text-white font-medium hover:bg-[var(--sure-teal-700)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {loading ? 'Bezig...' : mail ? 'Opnieuw genereren' : 'Genereer opvolgmail'}
+                {loading ? 'Bezig...' : result ? 'Opnieuw genereren' : 'Genereer opvolgmail'}
               </button>
             </div>
           </div>
 
-          {isMock && (
+          {result?.mock && (
             <div className="mb-3 text-xs px-3 py-2 rounded-md bg-[var(--amber)]/10 text-[var(--amber)] border border-[var(--amber)]/30">
               ⚠ Mock-respons getoond. Vul <code className="font-mono">ANTHROPIC_API_KEY</code> in{' '}
               <code className="font-mono">.env.local</code> en herstart de dev-server voor echte AI-output.
@@ -193,17 +202,87 @@ export function MailGenerator({ transcripts }: Props) {
             </div>
           )}
 
-          {mail ? (
-            <pre className="whitespace-pre-wrap font-sans text-sm text-[var(--foreground)] bg-[var(--surface-muted)] rounded-md p-4 border border-[var(--border)] overflow-y-auto max-h-[60vh]">
-              {mail}
-            </pre>
+          {result ? (
+            <div className="bg-[var(--surface-muted)] rounded-md p-4 border border-[var(--border)] overflow-y-auto max-h-[60vh]">
+              <div className="text-xs uppercase tracking-wider font-semibold text-[var(--muted)] mb-1">
+                Onderwerp
+              </div>
+              <div className="text-sm font-semibold text-[var(--foreground)] mb-3 pb-3 border-b border-[var(--border)]">
+                {result.onderwerp}
+              </div>
+              <pre className="whitespace-pre-wrap font-sans text-sm text-[var(--foreground)]">
+                {result.body}
+              </pre>
+            </div>
           ) : (
             <div className="text-sm text-[var(--muted)] italic flex-1 flex items-center justify-center min-h-[200px] bg-[var(--surface-muted)] rounded-md border border-dashed border-[var(--border)]">
-              {loading ? 'AI denkt na...' : 'Klik op "Genereer opvolgmail" om een conceptmail te maken op basis van het gesprek.'}
+              {loading
+                ? 'AI denkt na...'
+                : 'Klik op "Genereer opvolgmail" om een conceptmail te maken op basis van het gesprek.'}
             </div>
           )}
         </section>
       </div>
+
+      {/* Driver-checklist — toont wat AI heeft toegepast */}
+      {result && <DriverChecklist drivers={result.drivers} />}
     </div>
+  );
+}
+
+function DriverChecklist({ drivers }: { drivers: MailDrivers }) {
+  const used = DRIVER_ORDER.filter((k) => drivers[k]?.gebruikt).length;
+
+  return (
+    <section className="bg-white border border-[var(--border)] rounded-lg p-5">
+      <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+        <h2 className="text-xs uppercase tracking-wider font-semibold text-[var(--muted)]">
+          Drivers in deze mail
+          <span className="ml-2 normal-case font-normal tracking-normal text-[var(--grey)]">
+            — {used} van {DRIVER_ORDER.length} toegepast
+          </span>
+        </h2>
+        <p className="text-[10px] italic text-[var(--muted)]">
+          De AI markeert per driver of hij is gebruikt en geeft een citaat (of de reden om over te slaan).
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+        {DRIVER_ORDER.map((k) => {
+          const d = drivers[k];
+          const used = d?.gebruikt;
+          const accent = used
+            ? 'border-[var(--green)]/40 bg-[var(--green)]/5'
+            : 'border-[var(--grey)]/30 bg-[var(--surface-muted)]';
+          return (
+            <div key={k} className={`rounded-md border p-3 ${accent}`}>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-sm font-semibold text-[var(--foreground)]">
+                  {MAIL_DRIVER_LABELS[k]}
+                </span>
+                <span
+                  className={`text-[10px] uppercase tracking-wider font-bold ${
+                    used ? 'text-[var(--green)]' : 'text-[var(--grey)]'
+                  }`}
+                >
+                  {used ? '✓ Toegepast' : '— Overgeslagen'}
+                </span>
+              </div>
+              <p className="text-[10px] italic text-[var(--muted)] mb-2">
+                {MAIL_DRIVER_TOELICHTING[k]}
+              </p>
+              {used ? (
+                <p className="text-xs text-[var(--foreground)] bg-white border border-[var(--border)] rounded px-2 py-1.5 italic">
+                  &ldquo;{d.hoe}&rdquo;
+                </p>
+              ) : (
+                <p className="text-xs text-[var(--muted)]">
+                  {d?.reden_overgeslagen || 'Niet toegepast.'}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }

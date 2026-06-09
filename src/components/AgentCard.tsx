@@ -95,7 +95,7 @@ export function AgentCard({
       />
 
       {/* Klantscore-strip — Renault CSAT enquête (overkoepelend cijfer) */}
-      {klantscore && <KlantscoreStrip data={klantscore} />}
+      {klantscore && <KlantscoreStrip data={klantscore} agent={agent} />}
 
       {/* Teams banner */}
       {isTeamsOnly && (
@@ -165,30 +165,91 @@ const KLANTSCORE_COLOR_CLASS: Record<'green' | 'amber' | 'red' | 'grey', string>
 
 const KLANTSCORE_DRIVER_KEYS: KlantscoreDriverKey[] = ['ease', 'follow_up', 'listen', 'friendliness', 'clarity'];
 
-function KlantscoreStrip({ data }: { data: KlantscoreAgent }) {
+const KLANTSCORE_DRIVER_TOOLTIPS: Record<KlantscoreDriverKey, string> = {
+  ease: 'CSAT-vraag: "Hoe makkelijk was het om de klantenservice te bereiken?" Schaal 1-10.',
+  follow_up: 'CSAT-vraag: "Hoe goed werd uw verzoek na het gesprek opgevolgd?" Schaal 1-10.',
+  listen: 'CSAT-vraag: "Heeft de medewerker uw behoefte begrepen en goed geluisterd?" Schaal 1-10.',
+  friendliness: 'CSAT-vraag: "Hoe vriendelijk en betrokken was de medewerker?" Schaal 1-10.',
+  clarity: 'CSAT-vraag: "Hoe helder en accuraat waren de uitleg en antwoorden?" Schaal 1-10.',
+};
+
+function KlantscoreStrip({ data, agent }: { data: KlantscoreAgent; agent: Agent }) {
+  // AI-detectie van de Enquête-driver in de calls
+  const enqAsked = (agent.driversTotal.enquete as number | undefined) ?? 0;
+  const enqAskPct = agent.nCallsTotal > 0 ? Math.round((100 * enqAsked) / agent.nCallsTotal) : 0;
+  const csatLooksHigh = (data.cc_osat_avg ?? 0) >= 8.5;
+  const askLooksLow = enqAskPct < 15 && agent.nCallsTotal >= 10;
+  const flagMismatch = csatLooksHigh && askLooksLow;
+
   return (
     <div className="mt-4 bg-gradient-to-r from-[var(--surface-muted)] to-white border border-[var(--border)] rounded-md p-3">
-      <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+      {/* Header met bron-uitleg */}
+      <div className="mb-2">
         <div className="text-[10px] uppercase tracking-wider font-bold text-[var(--sure-teal-900)]">
           Klantscore-enquête (Renault CSAT)
           <span className="ml-2 text-[var(--muted)] font-normal normal-case tracking-normal">
             n = {data.total_enquetes} dossiers year-to-date
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <ScorePill label="VoC" value={formatVoc(data.voc_index_avg)} variant={vocClass(data.voc_index_avg)} />
-          <ScorePill label="Osat" value={formatOsat(data.cc_osat_avg)} variant={osatClass(data.cc_osat_avg)} />
+        <div className="text-[10px] italic text-[var(--muted)] mt-0.5">
+          Bron: Renault CSAT-enquête die klanten na hun dossier invullen. Elk cijfer hieronder is het
+          gemiddelde rapportcijfer over alle {data.total_enquetes} klanten die de enquête hebben
+          ingestuurd. Hover op een driver voor de letterlijke vraag aan de klant.
         </div>
       </div>
+
+      {/* Selectie-bias waarschuwing — nu BOVENAAN voor de cijfers, zodat je 'm niet mist */}
+      {flagMismatch && (
+        <div className="mb-3 text-[11px] leading-snug text-[var(--amber)] bg-[var(--amber)]/15 border border-[var(--amber)] rounded px-3 py-2.5">
+          <div className="font-bold uppercase tracking-wider text-[10px] mb-1">
+            ⚠ Let op — selectie-bias waarschijnlijk
+          </div>
+          De CSAT-cijfers hieronder zien er goed uit, maar onze AI detecteert dat {agent.naam.split(' ')[0]} in
+          slechts <strong>{enqAskPct}% van haar calls</strong> ({enqAsked} van {agent.nCallsTotal}) zelf om
+          de enquête vraagt. De klanten die wél een enquête invullen zijn meestal de tevreden klanten —
+          ontevreden klanten gooien hem weg. De {data.total_enquetes} ingevulde enquêtes zijn dus geen
+          representatieve steekproef. <strong>Coaching-richting:</strong> actief om de enquête vragen, ook
+          bij minder gunstige uitkomsten.
+        </div>
+      )}
+
+      {/* Headline-cijfers met ⚠ als bias geflagd is */}
+      <div className="flex items-center justify-end gap-3 flex-wrap mb-3">
+        {flagMismatch && (
+          <span className="text-[10px] text-[var(--amber)] font-semibold uppercase tracking-wider">
+            ⚠ Niet representatief
+          </span>
+        )}
+        <ScorePill
+          label="Klanttevredenheid"
+          subtitle="schaal −100 tot +100 · boven +50 = sterk"
+          techterm="VoC"
+          value={formatVoc(data.voc_index_avg)}
+          variant={flagMismatch ? 'grey' : vocClass(data.voc_index_avg)}
+          tooltip={`Voice of Customer Index — gewogen gemiddelde over ${data.total_enquetes} ingevulde enquêtes. Schaal −100 tot +100. Boven +50 = sterk, 0 tot +50 = matig, onder 0 = zorgwekkend.${flagMismatch ? ' LET OP: lage AI-vraag-rate maakt deze score niet representatief.' : ''}`}
+        />
+        <ScorePill
+          label="Rapportcijfer"
+          subtitle="1 tot 10 · boven 8 = goed"
+          techterm="Osat"
+          value={formatOsat(data.cc_osat_avg)}
+          variant={flagMismatch ? 'grey' : osatClass(data.cc_osat_avg)}
+          tooltip={`Overall Satisfaction — gemiddeld rapportcijfer van klanten op 'Hoe tevreden bent u over de helpdesk?'. Schaal 1-10. Boven 8 = goed, 7-8 = neutraal, onder 7 = aandachtspunt.${flagMismatch ? ' LET OP: lage AI-vraag-rate maakt deze score niet representatief.' : ''}`}
+        />
+      </div>
+
+      {/* 5 sub-drivers */}
       <div className="grid grid-cols-5 gap-1.5">
         {KLANTSCORE_DRIVER_KEYS.map((k) => (
-          <div key={k} className="text-center">
-            <div className="text-[9px] uppercase tracking-wider text-[var(--muted)] mb-1">
+          <div key={k} className="text-center" title={KLANTSCORE_DRIVER_TOOLTIPS[k]}>
+            <div className="text-[9px] uppercase tracking-wider text-[var(--muted)] mb-1 cursor-help">
               {KLANTSCORE_DRIVER_LABELS[k]}
             </div>
             <div
               className={`inline-block px-2 py-1 rounded text-xs font-semibold border ${
-                KLANTSCORE_COLOR_CLASS[driverScoreClass(data.drivers[k]?.avg)]
+                KLANTSCORE_COLOR_CLASS[
+                  flagMismatch ? 'grey' : driverScoreClass(data.drivers[k]?.avg)
+                ]
               }`}
             >
               {formatOsat(data.drivers[k]?.avg)}
@@ -196,25 +257,56 @@ function KlantscoreStrip({ data }: { data: KlantscoreAgent }) {
           </div>
         ))}
       </div>
+
+      {/* AI-detectie footer — feitelijke ratio (compact) */}
+      <div className="mt-3 pt-3 border-t border-[var(--border)]/60 flex items-center gap-3 flex-wrap">
+        <div className="text-[10px] uppercase tracking-wider font-bold text-[var(--sure-teal-900)]">
+          AI-detectie · Enquête actief gevraagd
+        </div>
+        <span
+          className={`px-2 py-1 rounded text-xs font-bold border ${
+            KLANTSCORE_COLOR_CLASS[askLooksLow ? 'red' : enqAskPct < 30 ? 'amber' : 'green']
+          }`}
+        >
+          {enqAskPct}%
+        </span>
+        <span className="text-[10px] text-[var(--muted)]">
+          ({enqAsked} van {agent.nCallsTotal} calls in scope)
+        </span>
+      </div>
     </div>
   );
 }
 
 function ScorePill({
   label,
+  subtitle,
+  techterm,
   value,
   variant,
+  tooltip,
 }: {
   label: string;
+  subtitle?: string;
+  techterm?: string;
   value: string;
   variant: 'green' | 'amber' | 'red' | 'grey';
+  tooltip?: string;
 }) {
   return (
-    <div className="flex items-center gap-1.5">
-      <span className="text-[10px] uppercase tracking-wider text-[var(--muted)] font-semibold">{label}</span>
-      <span className={`px-2 py-1 rounded text-xs font-bold border ${KLANTSCORE_COLOR_CLASS[variant]}`}>
-        {value}
-      </span>
+    <div className="flex flex-col items-end cursor-help" title={tooltip}>
+      <div className="text-[10px] uppercase tracking-wider text-[var(--muted)] font-semibold leading-tight">
+        {label}
+        {techterm && <span className="ml-1 normal-case text-[9px] text-[var(--grey)] font-normal">({techterm})</span>}
+      </div>
+      <div className="flex items-baseline gap-2 mt-0.5">
+        <span className={`px-2.5 py-1 rounded text-sm font-bold border ${KLANTSCORE_COLOR_CLASS[variant]}`}>
+          {value}
+        </span>
+      </div>
+      {subtitle && (
+        <div className="text-[9px] italic text-[var(--muted)] mt-0.5">{subtitle}</div>
+      )}
     </div>
   );
 }

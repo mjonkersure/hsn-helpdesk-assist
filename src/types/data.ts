@@ -8,6 +8,7 @@ export type DriverKey =
   | 'vraag_capteren'
   | 'identificatie'
   | 'oplossing'
+  | 'proactief_ondersteunend'
   | 'toon'
   | 'empathie'
   | 'afsluiting'

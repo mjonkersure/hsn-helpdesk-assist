@@ -1,43 +1,41 @@
 {
   "_meta": {
-    "generated_at": "2026-06-09T09:46:57.754Z",
+    "generated_at": "2026-06-09T11:47:57.063Z",
     "bron": "Salesforce Customer Service exports (Claims / Request / Custom Support Y2D)",
-    "total_enquetes": 287,
-    "unmapped_sf_codes": {
-      "005bD00000WwOtxQAF": 17
-    }
+    "total_enquetes": 304,
+    "unmapped_sf_codes": {}
   },
   "team": {
-    "total_enquetes": 287,
-    "voc_index_avg": 64.8,
+    "total_enquetes": 304,
+    "voc_index_avg": 62.3,
     "cc_osat_avg": 8.8,
     "drivers": {
       "ease": {
-        "n": 287,
+        "n": 304,
         "avg": 8.7
       },
       "follow_up": {
-        "n": 218,
+        "n": 222,
         "avg": 8.8
       },
       "listen": {
-        "n": 287,
-        "avg": 9
+        "n": 304,
+        "avg": 8.9
       },
       "friendliness": {
-        "n": 287,
+        "n": 304,
         "avg": 9.1
       },
       "clarity": {
-        "n": 287,
-        "avg": 8.9
+        "n": 304,
+        "avg": 8.8
       }
     }
   },
   "by_agent": {
     "Jeremy": {
       "sf_code": "0050X000008hSH2QAM",
-      "total_enquetes": 2,
+      "total_enquetes": 1,
       "voc_index_avg": 100,
       "cc_osat_avg": 10,
       "categories": {
@@ -52,30 +50,30 @@
           "osat_avg": null
         },
         "support": {
-          "n": 2,
+          "n": 1,
           "voc_avg": 100,
           "osat_avg": 10
         }
       },
       "drivers": {
         "ease": {
-          "n": 2,
+          "n": 1,
           "avg": 10
         },
         "follow_up": {
-          "n": 2,
+          "n": 1,
           "avg": 10
         },
         "listen": {
-          "n": 2,
+          "n": 1,
           "avg": 10
         },
         "friendliness": {
-          "n": 2,
+          "n": 1,
           "avg": 10
         },
         "clarity": {
-          "n": 2,
+          "n": 1,
           "avg": 10
         }
       }
@@ -127,9 +125,9 @@
     },
     "Rachid de Ling": {
       "sf_code": "0056700000BlctrAAB",
-      "total_enquetes": 9,
-      "voc_index_avg": 60,
-      "cc_osat_avg": 8.9,
+      "total_enquetes": 8,
+      "voc_index_avg": 67.5,
+      "cc_osat_avg": 9,
       "categories": {
         "claims": {
           "n": 2,
@@ -142,76 +140,76 @@
           "osat_avg": null
         },
         "support": {
-          "n": 7,
-          "voc_avg": 71.4,
-          "osat_avg": 9.3
-        }
-      },
-      "drivers": {
-        "ease": {
-          "n": 9,
-          "avg": 8.9
-        },
-        "follow_up": {
-          "n": 9,
-          "avg": 8.8
-        },
-        "listen": {
-          "n": 9,
-          "avg": 9.1
-        },
-        "friendliness": {
-          "n": 9,
-          "avg": 9.1
-        },
-        "clarity": {
-          "n": 9,
-          "avg": 9.1
-        }
-      }
-    },
-    "Kim Hillenaar": {
-      "sf_code": "0056700000BlT9uAAF",
-      "total_enquetes": 16,
-      "voc_index_avg": 62.5,
-      "cc_osat_avg": 8.9,
-      "categories": {
-        "claims": {
-          "n": 1,
-          "voc_avg": 100,
-          "osat_avg": 10
-        },
-        "request": {
-          "n": 13,
-          "voc_avg": 53.8,
-          "osat_avg": 8.7
-        },
-        "support": {
-          "n": 2,
-          "voc_avg": 100,
+          "n": 6,
+          "voc_avg": 83.3,
           "osat_avg": 9.5
         }
       },
       "drivers": {
         "ease": {
-          "n": 16,
-          "avg": 8.9
+          "n": 8,
+          "avg": 9
         },
         "follow_up": {
-          "n": 3,
-          "avg": 9.7
+          "n": 8,
+          "avg": 9
         },
         "listen": {
-          "n": 16,
-          "avg": 8.5
+          "n": 8,
+          "avg": 9.4
         },
         "friendliness": {
-          "n": 16,
-          "avg": 8.7
+          "n": 8,
+          "avg": 9.4
         },
         "clarity": {
-          "n": 16,
-          "avg": 8.4
+          "n": 8,
+          "avg": 9.4
+        }
+      }
+    },
+    "Kim Hillenaar": {
+      "sf_code": "0056700000BlT9uAAF",
+      "total_enquetes": 9,
+      "voc_index_avg": 55.6,
+      "cc_osat_avg": 9,
+      "categories": {
+        "claims": {
+          "n": 0,
+          "voc_avg": null,
+          "osat_avg": null
+        },
+        "request": {
+          "n": 9,
+          "voc_avg": 55.6,
+          "osat_avg": 9
+        },
+        "support": {
+          "n": 0,
+          "voc_avg": null,
+          "osat_avg": null
+        }
+      },
+      "drivers": {
+        "ease": {
+          "n": 9,
+          "avg": 8.8
+        },
+        "follow_up": {
+          "n": 0,
+          "avg": null
+        },
+        "listen": {
+          "n": 9,
+          "avg": 8.2
+        },
+        "friendliness": {
+          "n": 9,
+          "avg": 8.6
+        },
+        "clarity": {
+          "n": 9,
+          "avg": 8
         }
       }
     },
@@ -262,14 +260,14 @@
     },
     "Enno van Vaale": {
       "sf_code": "0056700000BlhkLAAR",
-      "total_enquetes": 26,
-      "voc_index_avg": 45.4,
-      "cc_osat_avg": 8.3,
+      "total_enquetes": 25,
+      "voc_index_avg": 43.2,
+      "cc_osat_avg": 8.2,
       "categories": {
         "claims": {
-          "n": 26,
-          "voc_avg": 45.4,
-          "osat_avg": 8.3
+          "n": 25,
+          "voc_avg": 43.2,
+          "osat_avg": 8.2
         },
         "request": {
           "n": 0,
@@ -284,42 +282,42 @@
       },
       "drivers": {
         "ease": {
-          "n": 26,
-          "avg": 8.3
+          "n": 25,
+          "avg": 8.2
         },
         "follow_up": {
-          "n": 26,
+          "n": 25,
           "avg": 8.2
         },
         "listen": {
-          "n": 26,
+          "n": 25,
           "avg": 8.2
         },
         "friendliness": {
-          "n": 26,
-          "avg": 8.6
+          "n": 25,
+          "avg": 8.5
         },
         "clarity": {
-          "n": 26,
-          "avg": 8.3
+          "n": 25,
+          "avg": 8.2
         }
       }
     },
     "Sayrah Badloe": {
       "sf_code": "0056700000Bm4BxAAJ",
-      "total_enquetes": 23,
-      "voc_index_avg": 53.9,
-      "cc_osat_avg": 8.4,
+      "total_enquetes": 22,
+      "voc_index_avg": 56.4,
+      "cc_osat_avg": 8.5,
       "categories": {
         "claims": {
-          "n": 20,
-          "voc_avg": 55,
-          "osat_avg": 8.4
+          "n": 21,
+          "voc_avg": 57.1,
+          "osat_avg": 8.5
         },
         "request": {
-          "n": 2,
-          "voc_avg": 50,
-          "osat_avg": 8.5
+          "n": 0,
+          "voc_avg": null,
+          "osat_avg": null
         },
         "support": {
           "n": 1,
@@ -329,68 +327,68 @@
       },
       "drivers": {
         "ease": {
-          "n": 23,
-          "avg": 8.7
+          "n": 22,
+          "avg": 8.9
         },
         "follow_up": {
-          "n": 21,
-          "avg": 8.3
+          "n": 22,
+          "avg": 8.4
         },
         "listen": {
-          "n": 23,
-          "avg": 8.7
+          "n": 22,
+          "avg": 8.8
         },
         "friendliness": {
-          "n": 23,
+          "n": 22,
           "avg": 9.2
         },
         "clarity": {
-          "n": 23,
+          "n": 22,
           "avg": 8.5
         }
       }
     },
     "Sarah Albuquerque": {
       "sf_code": "005bD00000D3iJZQAZ",
-      "total_enquetes": 42,
-      "voc_index_avg": 55.2,
+      "total_enquetes": 47,
+      "voc_index_avg": 55.7,
       "cc_osat_avg": 8.7,
       "categories": {
         "claims": {
-          "n": 5,
-          "voc_avg": 20,
-          "osat_avg": 8.4
+          "n": 6,
+          "voc_avg": 33.3,
+          "osat_avg": 8.7
         },
         "request": {
-          "n": 20,
-          "voc_avg": 53,
-          "osat_avg": 8.5
+          "n": 23,
+          "voc_avg": 50.4,
+          "osat_avg": 8.3
         },
         "support": {
-          "n": 17,
-          "voc_avg": 68.2,
+          "n": 18,
+          "voc_avg": 70,
           "osat_avg": 9.1
         }
       },
       "drivers": {
         "ease": {
-          "n": 42,
+          "n": 47,
           "avg": 8.7
         },
         "follow_up": {
-          "n": 22,
+          "n": 24,
           "avg": 9
         },
         "listen": {
-          "n": 42,
-          "avg": 8.8
+          "n": 47,
+          "avg": 8.7
         },
         "friendliness": {
-          "n": 42,
-          "avg": 8.8
+          "n": 47,
+          "avg": 8.7
         },
         "clarity": {
-          "n": 42,
+          "n": 47,
           "avg": 8.6
         }
       }
@@ -407,12 +405,12 @@
           "osat_avg": 10
         },
         "request": {
-          "n": 5,
-          "voc_avg": 80,
-          "osat_avg": 9.6
+          "n": 4,
+          "voc_avg": 75,
+          "osat_avg": 9.5
         },
         "support": {
-          "n": 8,
+          "n": 9,
           "voc_avg": 100,
           "osat_avg": 9.9
         }
@@ -420,10 +418,10 @@
       "drivers": {
         "ease": {
           "n": 15,
-          "avg": 9.5
+          "avg": 9.6
         },
         "follow_up": {
-          "n": 10,
+          "n": 11,
           "avg": 9.9
         },
         "listen": {
@@ -442,9 +440,9 @@
     },
     "Sara El-Berri": {
       "sf_code": "005bD000002rGv7QAE",
-      "total_enquetes": 39,
-      "voc_index_avg": 72.8,
-      "cc_osat_avg": 8.9,
+      "total_enquetes": 41,
+      "voc_index_avg": 74.1,
+      "cc_osat_avg": 9,
       "categories": {
         "claims": {
           "n": 0,
@@ -457,30 +455,30 @@
           "osat_avg": 9.1
         },
         "support": {
-          "n": 23,
-          "voc_avg": 73,
-          "osat_avg": 8.9
+          "n": 25,
+          "voc_avg": 75.2,
+          "osat_avg": 9
         }
       },
       "drivers": {
         "ease": {
-          "n": 39,
+          "n": 41,
           "avg": 9.1
         },
         "follow_up": {
-          "n": 23,
-          "avg": 8.6
+          "n": 25,
+          "avg": 8.7
         },
         "listen": {
-          "n": 39,
+          "n": 41,
           "avg": 9.2
         },
         "friendliness": {
-          "n": 39,
+          "n": 41,
           "avg": 9.4
         },
         "clarity": {
-          "n": 39,
+          "n": 41,
           "avg": 9
         }
       }
@@ -532,8 +530,8 @@
     },
     "Daniel Buabeng": {
       "sf_code": "005bD000001MgGAQA0",
-      "total_enquetes": 48,
-      "voc_index_avg": 65,
+      "total_enquetes": 50,
+      "voc_index_avg": 64.4,
       "cc_osat_avg": 8.8,
       "categories": {
         "claims": {
@@ -542,9 +540,9 @@
           "osat_avg": null
         },
         "request": {
-          "n": 4,
-          "voc_avg": 75,
-          "osat_avg": 9
+          "n": 6,
+          "voc_avg": 66.7,
+          "osat_avg": 8.8
         },
         "support": {
           "n": 44,
@@ -554,32 +552,77 @@
       },
       "drivers": {
         "ease": {
-          "n": 48,
-          "avg": 8.8
+          "n": 50,
+          "avg": 8.7
         },
         "follow_up": {
           "n": 44,
           "avg": 8.7
         },
         "listen": {
-          "n": 48,
+          "n": 50,
           "avg": 9.1
         },
         "friendliness": {
-          "n": 48,
-          "avg": 9.3
+          "n": 50,
+          "avg": 9.2
         },
         "clarity": {
-          "n": 48,
+          "n": 50,
           "avg": 9
+        }
+      }
+    },
+    "Trees": {
+      "sf_code": "005bD00000S65cnQAB",
+      "total_enquetes": 16,
+      "voc_index_avg": 15,
+      "cc_osat_avg": 7.3,
+      "categories": {
+        "claims": {
+          "n": 3,
+          "voc_avg": 26.7,
+          "osat_avg": 8
+        },
+        "request": {
+          "n": 13,
+          "voc_avg": 12.3,
+          "osat_avg": 7.1
+        },
+        "support": {
+          "n": 0,
+          "voc_avg": null,
+          "osat_avg": null
+        }
+      },
+      "drivers": {
+        "ease": {
+          "n": 16,
+          "avg": 7.8
+        },
+        "follow_up": {
+          "n": 3,
+          "avg": 8
+        },
+        "listen": {
+          "n": 16,
+          "avg": 7.3
+        },
+        "friendliness": {
+          "n": 16,
+          "avg": 7.5
+        },
+        "clarity": {
+          "n": 16,
+          "avg": 7.2
         }
       }
     },
     "Reno Els": {
       "sf_code": "0056700000Df56dAAB",
-      "total_enquetes": 18,
-      "voc_index_avg": 35.6,
-      "cc_osat_avg": 7.8,
+      "total_enquetes": 21,
+      "voc_index_avg": 40,
+      "cc_osat_avg": 8,
       "categories": {
         "claims": {
           "n": 0,
@@ -587,36 +630,36 @@
           "osat_avg": null
         },
         "request": {
-          "n": 7,
-          "voc_avg": 5.7,
-          "osat_avg": 7
+          "n": 9,
+          "voc_avg": 26.7,
+          "osat_avg": 7.7
         },
         "support": {
-          "n": 11,
-          "voc_avg": 54.5,
-          "osat_avg": 8.4
+          "n": 12,
+          "voc_avg": 50,
+          "osat_avg": 8.3
         }
       },
       "drivers": {
         "ease": {
-          "n": 18,
-          "avg": 8.3
+          "n": 21,
+          "avg": 8.4
         },
         "follow_up": {
-          "n": 11,
-          "avg": 8
+          "n": 12,
+          "avg": 7.9
         },
         "listen": {
-          "n": 18,
-          "avg": 8.1
+          "n": 21,
+          "avg": 8.2
         },
         "friendliness": {
-          "n": 18,
+          "n": 21,
           "avg": 8.7
         },
         "clarity": {
-          "n": 18,
-          "avg": 7.8
+          "n": 21,
+          "avg": 8
         }
       }
     }

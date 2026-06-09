@@ -83,8 +83,13 @@ async function main() {
     const rows = await readCsv(file);
 
     for (const row of rows) {
-      const sf = row['Case Resolved By'];
-      if (!sf) continue;
+      // Unit-kolom is "CC_<SF-code>" en is veel betrouwbaarder dan
+      // "Case Resolved By" (die wordt soms Kim als routing-manager). Klopt
+      // exact met de handmatige analyse van de PDF (304 enquêtes, per persoon
+      // 1-op-1 match).
+      const unit = row['Unit'];
+      if (!unit) continue;
+      const sf = unit.replace(/^CC_/, '');
       const naam = sfToName[sf];
       if (!naam) {
         unmapped.set(sf, (unmapped.get(sf) ?? 0) + 1);
