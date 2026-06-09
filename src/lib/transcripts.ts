@@ -5,7 +5,15 @@ import type { SampleTranscript } from '@/types/data';
 const SAMPLES_DIR = path.join(process.cwd(), 'src', 'data', 'sample-transcripts');
 
 export async function listSampleTranscripts(): Promise<SampleTranscript[]> {
-  const files = await fs.readdir(SAMPLES_DIR);
+  let files: string[];
+  try {
+    files = await fs.readdir(SAMPLES_DIR);
+  } catch (err) {
+    // Map kan ontbreken op productie (sample-transcripten zijn gitignored
+    // vanwege klantnamen). Toon dan een lege lijst zonder crash.
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return [];
+    throw err;
+  }
   const jsons = files.filter((f) => f.endsWith('.json'));
   const loaded = await Promise.all(
     jsons.map(async (f) => {

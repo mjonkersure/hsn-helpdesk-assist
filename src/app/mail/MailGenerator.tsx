@@ -56,6 +56,24 @@ export function MailGenerator({ transcripts }: Props) {
     setTimeout(() => setCopied(false), 1500);
   }
 
+  if (transcripts.length === 0) {
+    return (
+      <div className="bg-white border border-[var(--border)] rounded-lg p-6">
+        <h2 className="text-sm font-semibold text-[var(--foreground)] mb-2">Geen sample-transcripten beschikbaar</h2>
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          De demo-transcripten zijn lokaal-only (gitignored vanwege klantnamen). Voor de productie-demo:
+        </p>
+        <ul className="text-sm text-[var(--muted)] list-disc ml-5 mt-2 space-y-1">
+          <li>Anonimiseer 1-2 transcripten en commit ze naar <code className="font-mono text-xs">src/data/sample-transcripts/</code>, óf</li>
+          <li>Stel een upload-/storage-route in zodra Supabase aangesloten is</li>
+        </ul>
+        <p className="text-sm text-[var(--muted)] leading-relaxed mt-3">
+          Lokaal werkt de mail-generator wel — draai <code className="font-mono text-xs">npm run dev</code> en open <code className="font-mono text-xs">/mail</code>.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       {/* Transcript-keuze */}
