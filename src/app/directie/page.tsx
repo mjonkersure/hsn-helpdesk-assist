@@ -4,18 +4,21 @@ import { FilterBar } from '@/components/FilterBar';
 import { KpiCard } from '@/components/KpiCard';
 import { MatrixTable } from '@/components/MatrixTable';
 import { getDashboardData, pct } from '@/lib/data';
+import { getKlantscores, vocClass, osatClass, driverScoreClass, formatVoc, formatOsat } from '@/lib/klantscores';
+import { KLANTSCORE_DRIVER_LABELS } from '@/types/data';
+import type { KlantscoreDriverKey } from '@/types/data';
+
+const KLANTSCORE_DRIVER_KEYS: KlantscoreDriverKey[] = ['ease', 'follow_up', 'listen', 'friendliness', 'clarity'];
 
 export default function DirectiePage() {
   const data = getDashboardData();
-  const { team, agents } = data;
+  const klantscores = getKlantscores();
+  const { team } = data;
 
   // KPI berekeningen
   const teamAI = team.aiTotal || 0;
-  const agentsWithNps = agents.filter((a) => a.npsAvg !== null && a.npsAvg !== undefined);
-  const avgNps =
-    agentsWithNps.length > 0
-      ? agentsWithNps.reduce((s, a) => s + (a.npsAvg as number), 0) / agentsWithNps.length
-      : 0;
+  const voc = klantscores.team.voc_index_avg ?? 0;
+  const osat = klantscores.team.cc_osat_avg ?? 0;
   const opgelostJa = team.opgelost.ja || 0;
   const opgelostTotal = Object.values(team.opgelost).reduce((s, v) => s + v, 0);
   const herhaalPct = pct(team.nCallsHerhaal, team.nCallsNieuw + team.nCallsHerhaal);
@@ -49,10 +52,10 @@ export default function DirectiePage() {
               color={teamAI >= 0.75 ? 'green' : teamAI >= 0.4 ? 'amber' : 'red'}
             />
             <KpiCard
-              label="Klantscore NPS"
-              value={`${avgNps > 0 ? '+' : ''}${Math.round(avgNps)}`}
-              sub="gewogen NPS Q1 2026 over alle types"
-              color={avgNps >= 50 ? 'green' : avgNps >= 0 ? 'amber' : 'red'}
+              label="Klantscore (VoC)"
+              value={formatVoc(voc)}
+              sub={`${klantscores.team.total_enquetes} CSAT-enquêtes year-to-date · Osat ${formatOsat(osat)}/10`}
+              color={vocClass(voc) === 'grey' ? 'amber' : vocClass(voc)}
             />
             <KpiCard
               label="First-call resolution"
@@ -79,6 +82,40 @@ export default function DirectiePage() {
           </h2>
           <div className="bg-white border border-[var(--border)] rounded-lg p-6">
             <MatrixTable data={team} drivers={data.drivers} />
+          </div>
+        </section>
+
+        {/* Klantscore-drivers (team-totaal, geen namen) */}
+        <section>
+          <h2 className="text-xs uppercase tracking-wider font-semibold text-[var(--muted)] mb-3">
+            Wat de klant zelf zegt
+            <span className="ml-2 text-[var(--grey)] normal-case font-normal tracking-normal">
+              — 5 dimensies uit de Renault CSAT-enquête, team-totaal
+            </span>
+          </h2>
+          <div className="bg-white border border-[var(--border)] rounded-lg p-5">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              {KLANTSCORE_DRIVER_KEYS.map((k) => {
+                const d = klantscores.team.drivers[k];
+                const cls = driverScoreClass(d?.avg);
+                return (
+                  <div key={k} className="bg-[var(--surface-muted)] rounded-md p-3 text-center">
+                    <div className="text-[10px] uppercase tracking-wider text-[var(--muted)] font-semibold mb-1">
+                      {KLANTSCORE_DRIVER_LABELS[k]}
+                    </div>
+                    <div className={`text-2xl font-bold text-[var(--${cls === 'grey' ? 'muted' : cls})]`}>
+                      {formatOsat(d?.avg)}
+                    </div>
+                    <div className="text-[10px] text-[var(--muted)]">n = {d?.n ?? 0}</div>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-xs italic text-[var(--muted)] mt-3">
+              Dit zijn de scores die de klant zelf geeft, op een schaal 1-10. Deze 5 dimensies
+              mappen direct op onze AI-gespreksdrivers — daarom is dit de overkoepelende KPI naast de
+              AI-score.
+            </p>
           </div>
         </section>
 

@@ -37,6 +37,17 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude Code local state (permissions cache, machine-specific)
+.claude/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private data (bevat klant-PII: namen, e-mails, telefoonnummers)
+/src/data/private/
+
+# sample-transcripten bevatten klantgesprekken met namen/adressen → niet in publieke repo.
+# Lokaal genereren met scripts/extract-sample-transcripts.ps1
+/src/data/sample-transcripts/
+

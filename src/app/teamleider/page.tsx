@@ -5,10 +5,13 @@ import { MatrixTable } from '@/components/MatrixTable';
 import { DriverOverviewTable } from '@/components/DriverOverviewTable';
 import { TeamRanking } from '@/components/TeamRanking';
 import { DriverLegenda } from '@/components/DriverLegenda';
+import { KlantscoreTabel } from '@/components/KlantscoreTabel';
 import { getDashboardData } from '@/lib/data';
+import { getKlantscores } from '@/lib/klantscores';
 
 export default function TeamleiderPage() {
   const data = getDashboardData();
+  const klantscores = getKlantscores();
 
   return (
     <>
@@ -47,6 +50,19 @@ export default function TeamleiderPage() {
               Cel = percentage van calls waar driver via patroon-detectie is gevonden.
             </p>
             <DriverOverviewTable data={data} />
+          </div>
+        </Section>
+
+        {/* Klantscore-enquête — Renault CSAT */}
+        <Section
+          title="Klantscore-enquête"
+          sub={`${klantscores.team.total_enquetes} klant-enquêtes year-to-date, gekoppeld via Salesforce`}
+        >
+          <div className="bg-white border border-[var(--border)] rounded-lg p-5">
+            <p className="text-xs italic text-[var(--muted)] mb-3">
+              Wat de klant zelf zegt in de Renault CSAT-enquête na het dossier — naast (en straks correleerbaar met) onze AI-gespreksdrivers.
+            </p>
+            <KlantscoreTabel data={klantscores} />
           </div>
         </Section>
 

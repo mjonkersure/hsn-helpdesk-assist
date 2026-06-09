@@ -1,0 +1,20 @@
+{
+  "_doc": "Salesforce Case_Manager / Case Resolved By → medewerker. Bron: handmatig overzicht van Maurits, 2026-06-09. Gebruikt om klantscore-enquêtes (Claims/Request/Support CSVs) per medewerker te aggregeren.",
+  "agents": {
+    "0050X000008hSH2QAM": "Jeremy",
+    "0056700000Caa68AAB": "Mart",
+    "0056700000BlctrAAB": "Rachid de Ling",
+    "0056700000BlT9uAAF": "Kim Hillenaar",
+    "0056700000D6KRRAA3": "Matthijs Rands",
+    "0056700000BlhkLAAR": "Enno van Vaale",
+    "0056700000Bm4BxAAJ": "Sayrah Badloe",
+    "0056700000CoWKMAA3": "Dianne",
+    "005bD00000D3iJZQAZ": "Sarah Albuquerque",
+    "005bD000000hA49QAE": "Jalda Azimi",
+    "005bD000002rGv7QAE": "Sara El-Berri",
+    "005bD000007USMDQA4": "Arshad Akalie",
+    "005bD000001MgGAQA0": "Daniel Buabeng",
+    "005bD00000S65cnQAB": "Trees",
+    "0056700000Df56dAAB": "Reno Els"
+  }
+}

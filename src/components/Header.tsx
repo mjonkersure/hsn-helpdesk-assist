@@ -8,6 +8,7 @@ const NAV = [
   { href: '/medewerker', label: 'Voor medewerker' },
   { href: '/teamleider', label: 'Voor teamleider' },
   { href: '/directie', label: 'Voor directie' },
+  { href: '/mail', label: 'Mail-generator' },
 ];
 
 export function Header() {

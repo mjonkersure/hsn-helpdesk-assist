@@ -3,12 +3,18 @@ import { Banner } from '@/components/Banner';
 import { FilterBar } from '@/components/FilterBar';
 import { AgentCard } from '@/components/AgentCard';
 import { getDashboardData } from '@/lib/data';
+import { getKlantscores } from '@/lib/klantscores';
 
 export default function MedewerkerPage() {
   const data = getDashboardData();
+  const klantscores = getKlantscores();
 
-  // Voor MVP: toon alle medewerkers in volgorde van calls (meest data eerst)
-  const sorted = [...data.agents].sort((a, b) => b.nCallsTotal - a.nCallsTotal);
+  // Sorteer: medewerkers met klantscore-data of calls eerst, daarna lege kaarten
+  const sorted = [...data.agents].sort((a, b) => {
+    const aHas = (klantscores.by_agent[a.naam]?.total_enquetes ?? 0) + a.nCallsTotal;
+    const bHas = (klantscores.by_agent[b.naam]?.total_enquetes ?? 0) + b.nCallsTotal;
+    return bHas - aHas;
+  });
 
   return (
     <>
@@ -40,6 +46,7 @@ export default function MedewerkerPage() {
                 typeLabels={data.typeLabels}
                 emoLabels={data.emoLabels}
                 showPersonal
+                klantscore={klantscores.by_agent[agent.naam]}
               />
             ))}
           </div>

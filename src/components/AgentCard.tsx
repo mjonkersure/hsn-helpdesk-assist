@@ -1,7 +1,8 @@
-import type { Agent, Driver, DriverKey, EmotionKey } from '@/types/data';
-import { EMO_COLORS } from '@/types/data';
+import type { Agent, Driver, DriverKey, EmotionKey, KlantscoreAgent, KlantscoreDriverKey } from '@/types/data';
+import { EMO_COLORS, KLANTSCORE_DRIVER_LABELS } from '@/types/data';
 import { MatrixTable } from './MatrixTable';
 import { pct, formatAiScore, formatNps, npsClass, aiScoreClass } from '@/lib/data';
+import { osatClass, vocClass, driverScoreClass, formatVoc, formatOsat } from '@/lib/klantscores';
 
 interface Props {
   agent: Agent;
@@ -11,7 +12,14 @@ interface Props {
   emoLabels: Record<string, string>;
   /** Show personal blocks (focus, tip, vorig gesprek, trend) — alleen voor medewerker-view */
   showPersonal?: boolean;
+  /** Klantscore-aggregaat uit Renault CSAT-enquête (optioneel) */
+  klantscore?: KlantscoreAgent;
 }
+
+const ROL_STYLE: Record<string, string> = {
+  'Front Office': 'bg-[var(--sure-teal-400)]/30 text-[var(--sure-teal-900)] border-[var(--sure-teal-400)]',
+  'Back Office': 'bg-[var(--sure-orange)]/20 text-[var(--sure-teal-900)] border-[var(--sure-orange)]',
+};
 
 export function AgentCard({
   agent,
@@ -20,8 +28,10 @@ export function AgentCard({
   typeLabels,
   emoLabels,
   showPersonal = false,
+  klantscore,
 }: Props) {
   const isTeamsOnly = agent.teams && agent.nCallsTotal === 0;
+  const rolClass = ROL_STYLE[agent.rol] ?? 'bg-[var(--background)] text-[var(--foreground)] border-[var(--border)]';
 
   return (
     <div
@@ -30,27 +40,29 @@ export function AgentCard({
       }`}
     >
       {/* Header */}
-      <div className="flex items-baseline justify-between pb-3 border-b border-[var(--border)] mb-4">
-        <div className="flex items-baseline gap-2 flex-wrap">
-          <span className="text-lg font-semibold text-[var(--foreground)]">{agent.naam}</span>
-          <span className="text-xs text-[var(--muted)]">· {agent.rol}</span>
+      <div className="flex items-start justify-between pb-3 border-b border-[var(--border)] mb-4 gap-4">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-xl font-semibold text-[var(--foreground)]">{agent.naam}</span>
+          <span className={`px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wider border ${rolClass}`}>
+            {agent.rol}
+          </span>
           <div className="inline-flex gap-1">
             {agent.specs.map((s) => (
               <span
                 key={s}
-                className="px-2 py-0.5 rounded text-[10px] bg-[var(--background)] text-[#555]"
+                className="px-2 py-1 rounded text-[10px] bg-[var(--background)] text-[#555] font-medium"
               >
                 {s}
               </span>
             ))}
             {agent.teams && (
-              <span className="px-2 py-0.5 rounded text-[10px] bg-[#efe6f5] text-[#6b4a8a] font-semibold">
+              <span className="px-2 py-1 rounded text-[10px] bg-[#efe6f5] text-[#6b4a8a] font-semibold">
                 via Teams
               </span>
             )}
           </div>
         </div>
-        <div className="text-xs text-[var(--muted)]">
+        <div className="text-xs text-[var(--muted)] text-right shrink-0">
           {agent.nCallsTotal > 0
             ? `${agent.nCallsTotal} calls · ${agent.nCallsNieuw} 1e + ${agent.nCallsHerhaal} opvolging · ${Math.round(agent.durationMinTotal)} min`
             : agent.teams
@@ -81,6 +93,9 @@ export function AgentCard({
         drivers={drivers}
         focusDrivers={showPersonal ? agent.focusDrivers : []}
       />
+
+      {/* Klantscore-strip — Renault CSAT enquête (overkoepelend cijfer) */}
+      {klantscore && <KlantscoreStrip data={klantscore} />}
 
       {/* Teams banner */}
       {isTeamsOnly && (
@@ -137,6 +152,69 @@ export function AgentCard({
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+const KLANTSCORE_COLOR_CLASS: Record<'green' | 'amber' | 'red' | 'grey', string> = {
+  green: 'bg-[var(--green)]/15 text-[var(--green)] border-[var(--green)]/30',
+  amber: 'bg-[var(--amber)]/15 text-[var(--amber)] border-[var(--amber)]/30',
+  red: 'bg-[var(--red)]/15 text-[var(--red)] border-[var(--red)]/30',
+  grey: 'bg-[var(--grey)]/15 text-[var(--grey)] border-[var(--grey)]/30',
+};
+
+const KLANTSCORE_DRIVER_KEYS: KlantscoreDriverKey[] = ['ease', 'follow_up', 'listen', 'friendliness', 'clarity'];
+
+function KlantscoreStrip({ data }: { data: KlantscoreAgent }) {
+  return (
+    <div className="mt-4 bg-gradient-to-r from-[var(--surface-muted)] to-white border border-[var(--border)] rounded-md p-3">
+      <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+        <div className="text-[10px] uppercase tracking-wider font-bold text-[var(--sure-teal-900)]">
+          Klantscore-enquête (Renault CSAT)
+          <span className="ml-2 text-[var(--muted)] font-normal normal-case tracking-normal">
+            n = {data.total_enquetes} dossiers year-to-date
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <ScorePill label="VoC" value={formatVoc(data.voc_index_avg)} variant={vocClass(data.voc_index_avg)} />
+          <ScorePill label="Osat" value={formatOsat(data.cc_osat_avg)} variant={osatClass(data.cc_osat_avg)} />
+        </div>
+      </div>
+      <div className="grid grid-cols-5 gap-1.5">
+        {KLANTSCORE_DRIVER_KEYS.map((k) => (
+          <div key={k} className="text-center">
+            <div className="text-[9px] uppercase tracking-wider text-[var(--muted)] mb-1">
+              {KLANTSCORE_DRIVER_LABELS[k]}
+            </div>
+            <div
+              className={`inline-block px-2 py-1 rounded text-xs font-semibold border ${
+                KLANTSCORE_COLOR_CLASS[driverScoreClass(data.drivers[k]?.avg)]
+              }`}
+            >
+              {formatOsat(data.drivers[k]?.avg)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ScorePill({
+  label,
+  value,
+  variant,
+}: {
+  label: string;
+  value: string;
+  variant: 'green' | 'amber' | 'red' | 'grey';
+}) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--muted)] font-semibold">{label}</span>
+      <span className={`px-2 py-1 rounded text-xs font-bold border ${KLANTSCORE_COLOR_CLASS[variant]}`}>
+        {value}
+      </span>
     </div>
   );
 }

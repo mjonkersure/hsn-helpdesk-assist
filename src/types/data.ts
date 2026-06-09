@@ -118,3 +118,87 @@ export const EMO_COLORS: Record<EmotionKey, string> = {
   gefrustreerd_boos: '#d24a3e',
   onbekend: '#d8dde6',
 };
+
+// ============================================================
+// Transcripten (Deepgram-uitvoer vereenvoudigd) — voor mail-generator
+// ============================================================
+export interface TranscriptUtterance {
+  speaker: 'agent' | 'klant';
+  start: number;
+  text: string;
+}
+
+export interface SampleTranscript {
+  case_id: string;
+  duration_sec: number;
+  duration_mmss: string;
+  merk: string;
+  gesprekstype: string;
+  hoofdcategorie: string;
+  subonderwerp: string;
+  eerste_of_herhaal: string;
+  klant_emotie: string;
+  opgelost: string;
+  terugbel_belofte: string;
+  confidence: string;
+  samenvatting: string;
+  agent_naam: string;
+  agent_whisper: string | null;
+  utterances: TranscriptUtterance[];
+}
+
+// ============================================================
+// Klantscore-enquête (Renault CSAT export) — geaggregeerd
+// ============================================================
+export type KlantscoreCategorie = 'claims' | 'request' | 'support';
+
+export type KlantscoreDriverKey =
+  | 'ease'
+  | 'follow_up'
+  | 'listen'
+  | 'friendliness'
+  | 'clarity';
+
+export interface KlantscoreCatAgg {
+  n: number;
+  voc_avg: number | null;
+  osat_avg: number | null;
+}
+
+export interface KlantscoreDriverAgg {
+  n: number;
+  avg: number | null;
+}
+
+export interface KlantscoreAgent {
+  sf_code: string;
+  total_enquetes: number;
+  voc_index_avg: number | null;
+  cc_osat_avg: number | null;
+  categories: Record<KlantscoreCategorie, KlantscoreCatAgg>;
+  drivers: Record<KlantscoreDriverKey, KlantscoreDriverAgg>;
+}
+
+export interface KlantscoreData {
+  _meta: {
+    generated_at: string;
+    bron: string;
+    total_enquetes: number;
+    unmapped_sf_codes: Record<string, number>;
+  };
+  team: {
+    total_enquetes: number;
+    voc_index_avg: number | null;
+    cc_osat_avg: number | null;
+    drivers: Record<KlantscoreDriverKey, KlantscoreDriverAgg>;
+  };
+  by_agent: Record<string, KlantscoreAgent>;
+}
+
+export const KLANTSCORE_DRIVER_LABELS: Record<KlantscoreDriverKey, string> = {
+  ease: 'Bereikbaarheid',
+  follow_up: 'Opvolging',
+  listen: 'Luisteren',
+  friendliness: 'Vriendelijkheid',
+  clarity: 'Duidelijkheid',
+};
