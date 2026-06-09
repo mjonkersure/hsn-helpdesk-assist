@@ -3,6 +3,9 @@
 > Coaching-dashboard voor het HSN-helpdesk-team van Renault Nederland.
 > Gebouwd door **& sure-it** — *in a demanding world*.
 
+**🚀 Live:** [hsn-helpdesk-assist.vercel.app](https://hsn-helpdesk-assist.vercel.app/teamleider)
+**📦 Repo:** [github.com/mjonkersure/hsn-helpdesk-assist](https://github.com/mjonkersure/hsn-helpdesk-assist)
+
 Een React/Next.js webapp die per medewerker driver-scores (gebaseerd op Marten's 9 QA-criteria) combineert met NPS-klantbeleving, Eddy's beluister-profielen en patroon-detectie op transcripten.
 
 ## Drie doelgroep-views
@@ -38,6 +41,8 @@ npm run build
 # Type-checking + linting
 npm run lint
 ```
+
+> **Op Windows:** als `npm` niet werkt in PowerShell (`'npm' is not recognized` of execution-policy-error), gebruik `start-dev.bat` in de project-root — die regelt alles.
 
 ## Project-structuur
 
