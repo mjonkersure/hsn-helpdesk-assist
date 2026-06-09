@@ -1,5 +1,6 @@
-import type { DashboardData } from '@/types/data';
+import type { DashboardData, KlantscoreData } from '@/types/data';
 import { pct, driverPctClass, formatNps, npsClass, formatAiScore, aiScoreClass } from '@/lib/data';
+import { vocClass, formatVoc } from '@/lib/klantscores';
 
 const GROUP_CLASS: Record<string, string> = {
   welkom: 'bg-[var(--g-welkom)]',
@@ -10,7 +11,13 @@ const GROUP_CLASS: Record<string, string> = {
   inhoud: 'bg-[var(--g-inhoud)]',
 };
 
-export function DriverOverviewTable({ data }: { data: DashboardData }) {
+export function DriverOverviewTable({
+  data,
+  klantscores,
+}: {
+  data: DashboardData;
+  klantscores?: KlantscoreData;
+}) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-xs" style={{ tableLayout: 'fixed' }}>
@@ -34,6 +41,11 @@ export function DriverOverviewTable({ data }: { data: DashboardData }) {
             <th className="border border-[var(--border)] bg-[var(--sure-teal-900)] text-white text-center font-semibold leading-tight" style={{ fontSize: '10px', width: '78px' }}>
               Klantscore<br />NPS
             </th>
+            {klantscores && (
+              <th className="border border-[var(--border)] bg-[var(--sure-teal-900)] text-white text-center font-semibold leading-tight" style={{ fontSize: '10px', width: '88px' }}>
+                VoC<br />CSAT-enquête
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -103,6 +115,25 @@ export function DriverOverviewTable({ data }: { data: DashboardData }) {
                 <td className={`border border-[var(--border)] bg-[var(--surface-muted)] text-center font-bold text-[var(--${npsCls})]`} style={{ fontSize: '13px' }}>
                   {formatNps(a.npsAvg)}
                 </td>
+                {klantscores && (() => {
+                  const ks = klantscores.by_agent[a.naam];
+                  if (!ks) {
+                    return (
+                      <td className="border border-[var(--border)] bg-[var(--surface-muted)] text-center text-[var(--grey)]" style={{ fontSize: '13px' }}>
+                        —
+                      </td>
+                    );
+                  }
+                  const vocCls = vocClass(ks.voc_index_avg);
+                  return (
+                    <td className={`border border-[var(--border)] bg-[var(--surface-muted)] text-center font-bold text-[var(--${vocCls === 'grey' ? 'muted' : vocCls})]`} style={{ fontSize: '13px' }}>
+                      <span className="block">{formatVoc(ks.voc_index_avg)}</span>
+                      <span className="block text-[9px] text-[var(--muted)] font-normal">
+                        n={ks.total_enquetes}
+                      </span>
+                    </td>
+                  );
+                })()}
               </tr>
             );
           })}

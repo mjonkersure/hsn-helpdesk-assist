@@ -6,6 +6,7 @@ import { DriverOverviewTable } from '@/components/DriverOverviewTable';
 import { TeamRanking } from '@/components/TeamRanking';
 import { DriverLegenda } from '@/components/DriverLegenda';
 import { KlantscoreTabel } from '@/components/KlantscoreTabel';
+import { EnqueteCorrelationChart } from '@/components/EnqueteCorrelationChart';
 import { getDashboardData } from '@/lib/data';
 import { getKlantscores } from '@/lib/klantscores';
 
@@ -49,7 +50,21 @@ export default function TeamleiderPage() {
               Telefoon-1e + telefoon-opvolging samengeteld. Mail en App nog geen pipeline.
               Cel = percentage van calls waar driver via patroon-detectie is gevonden.
             </p>
-            <DriverOverviewTable data={data} />
+            <DriverOverviewTable data={data} klantscores={klantscores} />
+          </div>
+        </Section>
+
+        {/* Correlatie-grafiek — vraag-naar-enquête vs ontvangen enquêtes */}
+        <Section
+          title="Vragen om enquête vs ontvangen enquêtes"
+          sub="correlatie tussen gesprek-output (driver Enquête) en feitelijke klantscore-binnenkomst"
+        >
+          <div className="bg-white border border-[var(--border)] rounded-lg p-5">
+            <p className="text-xs italic text-[var(--muted)] mb-3">
+              Helpt het om in de call expliciet naar de enquête te vragen? Plot per medewerker
+              hoe vaak ze het noemen tegen hoeveel enquêtes ze binnenkrijgen (met kleur = klant-VoC).
+            </p>
+            <EnqueteCorrelationChart data={data} klantscores={klantscores} />
           </div>
         </Section>
 
