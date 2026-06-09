@@ -19,6 +19,8 @@ export default function DirectiePage() {
   const teamAI = team.aiTotal || 0;
   const voc = klantscores.team.voc_index_avg ?? 0;
   const osat = klantscores.team.cc_osat_avg ?? 0;
+  const vocCls = vocClass(voc);
+  const vocKpiColor: 'green' | 'amber' | 'red' = vocCls === 'grey' ? 'amber' : vocCls;
   const opgelostJa = team.opgelost.ja || 0;
   const opgelostTotal = Object.values(team.opgelost).reduce((s, v) => s + v, 0);
   const herhaalPct = pct(team.nCallsHerhaal, team.nCallsNieuw + team.nCallsHerhaal);
@@ -55,7 +57,7 @@ export default function DirectiePage() {
               label="Klantscore (VoC)"
               value={formatVoc(voc)}
               sub={`${klantscores.team.total_enquetes} CSAT-enquêtes year-to-date · Osat ${formatOsat(osat)}/10`}
-              color={vocClass(voc) === 'grey' ? 'amber' : vocClass(voc)}
+              color={vocKpiColor}
             />
             <KpiCard
               label="First-call resolution"
